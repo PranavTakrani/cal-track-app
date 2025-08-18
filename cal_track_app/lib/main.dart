@@ -1,7 +1,38 @@
+import 'package:cal_track_app/login_page.dart';
 import 'package:flutter/material.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'auth_page.dart';
+import 'package:google_fonts/google_fonts.dart';
+
+final theme = ThemeData(
+  brightness: Brightness.dark,
+  scaffoldBackgroundColor: const Color(0xFF0D0D15), 
+  primaryColor: const Color(0xFF4F46E5), 
+  fontFamily: GoogleFonts.inter().fontFamily,
+  inputDecorationTheme: InputDecorationTheme(
+    filled: true,
+    fillColor: const Color(0xFF1E1E2D),
+    border: OutlineInputBorder(
+      borderRadius: BorderRadius.circular(8),
+      borderSide: BorderSide.none,
+    ),
+    hintStyle: const TextStyle(color: Colors.white54),
+    labelStyle: const TextStyle(color: Colors.white70),
+  ),
+  textTheme: const TextTheme(
+    bodyMedium: TextStyle(color: Colors.white),
+    titleLarge: TextStyle(fontWeight: FontWeight.bold),
+  ),
+  elevatedButtonTheme: ElevatedButtonThemeData(
+    style: ElevatedButton.styleFrom(
+      backgroundColor: Color(0xFF4F46E5),
+      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(8)),
+      padding: EdgeInsets.symmetric(horizontal: 32, vertical: 16),
+    ),
+  ),
+);
+
+
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -19,8 +50,8 @@ class CalorieTrackApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'Calorie Track App',
-      theme: ThemeData(primarySwatch: Colors.green),
-      home: const AuthPage(),
+      theme: theme,
+      home: const LoginPage(),
     );
   }
 }

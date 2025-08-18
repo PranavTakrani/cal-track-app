@@ -9,3 +9,4 @@ final authStateProvider = riverpod.StreamProvider<Session?>((ref) {
   final supabase = ref.watch(supabaseProvider);
   return supabase.auth.onAuthStateChange.map((event) => event.session);
 });
+
