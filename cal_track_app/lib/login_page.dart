@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'auth_provider.dart';
 import 'authFunctions.dart';
+import 'sign_up_page.dart';
 
 
 class LoginPage extends ConsumerStatefulWidget {
@@ -68,6 +69,16 @@ class _LoginPageState extends ConsumerState<LoginPage> {
                 await signInWithGoogle(ref);
               },
               child: const Text('Login with Google'),
+            ),
+            SizedBox(height: spacing * 2),
+            TextButton(
+              onPressed: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => const SignUpPage()),
+                );
+              },
+              child: const Text("Don’t have an account? Sign Up"),
             ),
           ],
         ),

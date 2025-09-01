@@ -3,6 +3,8 @@ import 'package:flutter/material.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'auth_provider.dart';
+import 'home_page.dart';
 
 final theme = ThemeData(
   brightness: Brightness.dark,
@@ -43,15 +45,17 @@ void main() async {
   runApp(const ProviderScope(child: CalorieTrackApp()));
 }
 
-class CalorieTrackApp extends StatelessWidget {
+class CalorieTrackApp extends ConsumerWidget {
   const CalorieTrackApp({super.key});
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, WidgetRef ref) {
+    final session = ref.watch(supabaseProvider).auth.currentSession;
+    
     return MaterialApp(
       title: 'Calorie Track App',
       theme: theme,
-      home: const LoginPage(),
+      home: session != null ? const HomePage() : const LoginPage(),
     );
   }
 }
